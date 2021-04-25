@@ -1,3 +1,7 @@
+object ProjectModules {
+    const val domain = ":domain"
+}
+
 object AndroidSettings {
     const val compileSdk = 30
     const val buildTools = "30.0.3"
