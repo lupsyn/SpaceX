@@ -4,13 +4,13 @@ plugins {
 }
 
 dependencies {
-    implementation(Dependencies.AndroidX.Navigation.fragmentKtx)
-    implementation(Dependencies.AndroidX.Navigation.uiKtx)
-    implementation(Dependencies.AndroidX.lifecycleLivedataKtx)
+    implementation(com.challenge.Dependencies.AndroidX.Navigation.fragmentKtx)
+    implementation(com.challenge.Dependencies.AndroidX.Navigation.uiKtx)
+    implementation(com.challenge.Dependencies.AndroidX.lifecycleLivedataKtx)
 
-   annotationProcessor(Dependencies.AndroidX.lifecycleCompiler)
-    annotationProcessor(Dependencies.AndroidX.archViewModel)
+   annotationProcessor(com.challenge.Dependencies.AndroidX.lifecycleCompiler)
+    annotationProcessor(com.challenge.Dependencies.AndroidX.archViewModel)
 
-    implementation(Dependencies.AndroidX.archViewModelKtx)
-    implementation(Dependencies.AndroidX.archViewModel)
+    implementation(com.challenge.Dependencies.AndroidX.archViewModelKtx)
+    implementation(com.challenge.Dependencies.AndroidX.archViewModel)
 }

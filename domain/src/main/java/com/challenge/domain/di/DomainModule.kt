@@ -16,5 +16,5 @@ object DomainModule {
     fun getCompanyInfo(spaceXRepository: SpaceXRepository): GetCompanyInfo =
         GetCompanyInfoImpl(spaceXRepository)
 
-    fun getLaunchDomainFilter(): LaunchesDomainFilter = LaunchesDomainFilterImpl()
+    private fun getLaunchDomainFilter(): LaunchesDomainFilter = LaunchesDomainFilterImpl()
 }

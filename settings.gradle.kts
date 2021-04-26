@@ -6,5 +6,8 @@ include(
     ":domain",
     ":core-test-utils",
     ":core",
+    ":data",
+    ":data-db",
+    ":data-api",
     ":navigation"
 )

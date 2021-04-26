@@ -1,8 +1,8 @@
 package com.challenge.android.plugin
 
-import AndroidSettings
-import Dependencies
-import TestDependencies
+import com.challenge.AndroidSettings
+import com.challenge.Dependencies
+import com.challenge.TestDependencies
 import com.android.build.gradle.BaseExtension
 import org.gradle.api.Plugin
 import org.gradle.api.Project
@@ -37,8 +37,7 @@ open class AndroidPlugin : Plugin<Project> {
     }
 
     private fun androidPlugins() = listOf(
-        "kotlin-android",
-        "kotlin-android-extensions"
+        "kotlin-android"
     )
 
     private fun Project.configurePlugins(buildType: BuildType) = listOf(

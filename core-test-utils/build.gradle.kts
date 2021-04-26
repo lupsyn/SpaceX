@@ -4,8 +4,8 @@ plugins {
 }
 
 dependencies {
-    implementation(TestDependencies.kotlinxCoroutines)
-    implementation(TestDependencies.AndroidX.espressoCore)
-    implementation(TestDependencies.AndroidX.espressoContrib)
-    implementation(Dependencies.jodaTime)
+    implementation(com.challenge.TestDependencies.kotlinxCoroutines)
+    implementation(com.challenge.TestDependencies.AndroidX.espressoCore)
+    implementation(com.challenge.TestDependencies.AndroidX.espressoContrib)
+    implementation(com.challenge.Dependencies.jodaTime)
 }

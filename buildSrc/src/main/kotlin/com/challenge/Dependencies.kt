@@ -1,7 +1,12 @@
+package com.challenge
+
 object ProjectModules {
     const val core = ":core"
     const val navigation = ":navigation"
     const val domain = ":domain"
+    const val api = ":data-api"
+    const val data = ":data"
+    const val db = ":data-db"
     const val coreTestUtils = ":core-test-utils"
 }
 
