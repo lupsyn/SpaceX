@@ -1,5 +1,6 @@
 object ProjectModules {
     const val core = ":core"
+    const val navigation = ":navigation"
     const val domain = ":domain"
     const val coreTestUtils = ":core-test-utils"
 }
@@ -69,7 +70,7 @@ object Dependencies {
             "androidx.lifecycle:lifecycle-viewmodel:${Versions.lifeCycle}"
 
         const val archViewModelKtx =
-            "androidx.lifecycle:lifecycle-viewmodel-ktx::${Versions.lifeCycle}"
+            "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.lifeCycle}"
 
         const val browser = "androidx.browser:browser:${Versions.browser}"
 

@@ -21,14 +21,16 @@ android {
         getByName("release") {
             isMinifyEnabled = false
             proguardFiles(
-                    getDefaultProguardFile("proguard-android-optimize.txt"),
-                    file("proguard-rules.pro")
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                file("proguard-rules.pro")
             )
         }
     }
 }
 
 dependencies {
+    implementation(project(ProjectModules.core))
+    implementation(project(ProjectModules.navigation))
     implementation(Dependencies.AndroidX.materialDesign)
     implementation(Dependencies.AndroidX.appCompact)
     implementation(Dependencies.AndroidX.fragmentKtx)
