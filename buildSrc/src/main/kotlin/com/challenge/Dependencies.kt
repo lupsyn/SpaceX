@@ -1,5 +1,7 @@
 object ProjectModules {
+    const val core = ":core"
     const val domain = ":domain"
+    const val coreTestUtils = ":core-test-utils"
 }
 
 object AndroidSettings {
