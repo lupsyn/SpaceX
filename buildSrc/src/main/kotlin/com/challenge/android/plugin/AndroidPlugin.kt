@@ -1,8 +1,5 @@
 package com.challenge.android.plugin
 
-import com.challenge.AndroidSettings
-import com.challenge.Dependencies
-import com.challenge.TestDependencies
 import com.android.build.gradle.BaseExtension
 import org.gradle.api.Plugin
 import org.gradle.api.Project

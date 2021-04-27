@@ -4,7 +4,7 @@ plugins {
 }
 
 dependencies {
-    implementation(com.challenge.Dependencies.jodaTime)
-    testImplementation(com.challenge.Dependencies.jodaTime)
-    testImplementation(project(com.challenge.ProjectModules.coreTestUtils))
+    implementation(Dependencies.jodaTime)
+    testImplementation(Dependencies.jodaTime)
+    testImplementation(project(ProjectModules.coreTestUtils))
 }

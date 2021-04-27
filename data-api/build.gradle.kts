@@ -4,13 +4,13 @@ plugins {
 }
 
 dependencies {
-    implementation(project(com.challenge.ProjectModules.data))
-    testImplementation(project(com.challenge.ProjectModules.coreTestUtils))
+    implementation(project(ProjectModules.data))
+    testImplementation(project(ProjectModules.coreTestUtils))
 
-    api(com.challenge.Dependencies.Retrofit.retrofit)
-    api(com.challenge.Dependencies.Retrofit.retrofitConverterGson)
-    api(com.challenge.Dependencies.okHttpLoggingInterceptor)
+    api(Dependencies.Retrofit.retrofit)
+    api(Dependencies.Retrofit.retrofitConverterGson)
+    api(Dependencies.okHttpLoggingInterceptor)
 
-    implementation(com.challenge.Dependencies.jodaTime)
-    testImplementation(com.challenge.Dependencies.jodaTime)
+    implementation(Dependencies.jodaTime)
+    testImplementation(Dependencies.jodaTime)
 }

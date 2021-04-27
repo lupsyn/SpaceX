@@ -1,5 +1,3 @@
-package com.challenge
-
 object ProjectModules {
     const val core = ":core"
     const val navigation = ":navigation"

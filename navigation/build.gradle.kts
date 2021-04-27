@@ -4,6 +4,6 @@ plugins {
 }
 
 dependencies {
-    implementation(com.challenge.Dependencies.AndroidX.Navigation.fragmentKtx)
-    implementation(com.challenge.Dependencies.AndroidX.Navigation.uiKtx)
+    implementation(Dependencies.AndroidX.Navigation.fragmentKtx)
+    implementation(Dependencies.AndroidX.Navigation.uiKtx)
 }
