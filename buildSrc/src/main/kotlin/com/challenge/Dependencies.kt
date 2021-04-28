@@ -1,5 +1,6 @@
 object ProjectModules {
     const val core = ":core"
+    const val presentation = ":presentation"
     const val navigation = ":navigation"
     const val domain = ":domain"
     const val api = ":data-api"
@@ -13,7 +14,15 @@ object AndroidSettings {
     const val buildTools = "30.0.3"
     const val minSdk = 26
     const val targetSdk = 30
+    const val applicationId = "com.challenge.spacex"
     const val testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+}
+
+object Plugins {
+    const val androidApplication = "com.android.application"
+    const val kotlinAndroid = "kotlin-android"
+    const val challengePlugin = "com.challenge.android.plugin"
+    const val androidLibrary = "com.android.library"
 }
 
 object Versions {
@@ -28,8 +37,8 @@ object Versions {
     const val junit = "4.12"
     const val junitPlatformRunner = "1.0.2"
     const val mockito = "3.9.0"
-    const val gradle = "3.5.1"
-    const val kotlin = "1.4.30"
+    const val gradle = "4.1.0"
+    const val kotlin = "1.4.32"
     const val coreTesting = "1.1.1"
     const val retrofit = "2.9.0"
     const val retrofitConverterGson = "2.9.0"

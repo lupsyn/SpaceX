@@ -1,26 +1,25 @@
 package com.challenge.android.plugin
 
+import AndroidSettings
+import Dependencies
+import TestDependencies
 import com.android.build.gradle.BaseExtension
+import org.gradle.api.JavaVersion
 import org.gradle.api.Plugin
 import org.gradle.api.Project
-import org.gradle.kotlin.dsl.create
-import org.gradle.kotlin.dsl.dependencies
-import org.gradle.kotlin.dsl.invoke
-import org.gradle.kotlin.dsl.kotlin
-import org.gradle.kotlin.dsl.withType
+import org.gradle.kotlin.dsl.*
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 open class AndroidPlugin : Plugin<Project> {
     override fun apply(project: Project) {
-        @Suppress("UnstableApiUsage")
         val extension = project.extensions.create<AndroidPluginExtension>("androidPlugin")
 
-        project.configurePlugins(extension.buildType)
-        project.configureAndroid()
-        project.configureDependencies()
+        with(project) {
+            configurePlugins(extension.buildType)
+            configureAndroid()
+            configureDependencies()
 
-        project.afterEvaluate {
-            with(project) {
+            afterEvaluate {
                 tasks {
                     withType<KotlinCompile> {
                         with(kotlinOptions) {
@@ -33,47 +32,57 @@ open class AndroidPlugin : Plugin<Project> {
         }
     }
 
-    private fun androidPlugins() = listOf(
-        "kotlin-android"
-    )
+    private fun androidPlugins() = listOf("kotlin-android")
 
     private fun Project.configurePlugins(buildType: BuildType) = listOf(
         when (buildType) {
             BuildType.AndroidLibrary, BuildType.App -> androidPlugins()
             BuildType.Library -> listOf("kotlin")
-        },
-        listOf("kotlin-kapt")
-    )
-        .flatten()
+        }, listOf("kotlin-kapt")
+    ).flatten()
         .also { println("AndroidPlugin: applying plugins $it") }
-        .forEach {
-            plugins.apply(it)
+        .forEach { plugins.apply(it) }
+
+    private fun Project.configureAndroid() =
+        extensions.getByType(BaseExtension::class.java).run {
+            compileSdkVersion(AndroidSettings.compileSdk)
+            buildToolsVersion(AndroidSettings.buildTools)
+            buildTypes {
+                getByName("debug") {
+                    isDebuggable = true
+                    buildConfigField("Integer", "PORT", "8080")
+                }
+                getByName("release") {
+                    isMinifyEnabled = false
+                    proguardFiles(
+                        getDefaultProguardFile("proguard-android-optimize.txt"),
+                        file("proguard-rules.pro")
+                    )
+                }
+            }
+
+            compileOptions {
+                sourceCompatibility = JavaVersion.VERSION_1_8
+                targetCompatibility = JavaVersion.VERSION_1_8
+            }
+
+            defaultConfig {
+                minSdkVersion(AndroidSettings.minSdk)
+                targetSdkVersion(AndroidSettings.targetSdk)
+
+                testInstrumentationRunner = AndroidSettings.testInstrumentationRunner
+            }
+
+            testOptions {
+                unitTests.isReturnDefaultValues = true
+                animationsDisabled = true
+            }
+
+            lintOptions {
+                isAbortOnError = false
+            }
         }
 
-    private fun Project.configureAndroid() = extensions.getByType(BaseExtension::class.java).run {
-        compileSdkVersion(AndroidSettings.compileSdk)
-        buildToolsVersion(AndroidSettings.buildTools)
-
-
-        defaultConfig {
-            versionCode = 1
-            versionName = "1.0"
-
-            minSdkVersion(AndroidSettings.minSdk)
-            targetSdkVersion(AndroidSettings.targetSdk)
-
-            testInstrumentationRunner = AndroidSettings.testInstrumentationRunner
-        }
-
-        testOptions {
-            unitTests.isReturnDefaultValues = true
-            animationsDisabled = true
-        }
-
-        lintOptions {
-            isAbortOnError = false
-        }
-    }
 
     private fun Project.configureDependencies() = dependencies {
         fun implementation(definition: Any) = "implementation"(definition)

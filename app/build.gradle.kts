@@ -1,35 +1,31 @@
 import com.challenge.android.plugin.BuildType
 
 plugins {
-    id("com.android.application")
-    id("com.challenge.android.plugin")
+    id(Plugins.androidApplication)
+    id(Plugins.challengePlugin)
+    id(Plugins.kotlinAndroid)
+}
+
+android {
+    defaultConfig {
+        applicationId = AndroidSettings.applicationId
+        versionCode = 1
+        versionName = "1.0"
+    }
+
+    buildFeatures.viewBinding = true
 }
 
 androidPlugin {
     buildType = BuildType.App
 }
 
-android {
-    defaultConfig {
-        applicationId = "com.challenge.spacex"
-    }
-    buildTypes {
-        getByName("debug") {
-            isDebuggable = true
-            buildConfigField("Integer", "PORT", "8080")
-        }
-        getByName("release") {
-            isMinifyEnabled = false
-            proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                file("proguard-rules.pro")
-            )
-        }
-    }
-}
-
 dependencies {
     implementation(project(ProjectModules.core))
+    implementation(project(ProjectModules.domain))
+    implementation(project(ProjectModules.data))
+    implementation(project(ProjectModules.api))
+    implementation(project(ProjectModules.presentation))
     implementation(project(ProjectModules.navigation))
     implementation(Dependencies.AndroidX.materialDesign)
     implementation(Dependencies.AndroidX.appCompact)

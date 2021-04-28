@@ -1,0 +1,119 @@
+<resources>
+
+    <style name="AppTheme.AlertDialogTheme" parent="Theme.MaterialComponents.DayNight.Dialog.Alert">
+        <!-- ColorPrimary corresponds to the color of a button in an alert dialog.-->
+        <item name="colorPrimary">@color/colorSecondary</item>
+        <item name="colorAccent">@color/colorSecondary</item>
+    </style>
+
+    <style name="MoonShot.Widget.Toolbar" parent="ThemeOverlay.MaterialComponents.Dark.ActionBar">
+        <item name="android:background">?attr/colorPrimary</item>
+    </style>
+
+    <style name="TextAppearance.SpaceX.Headline1" parent="TextAppearance.MaterialComponents.Headline1">
+        <item name="fontFamily">@font/space_mono</item>
+    </style>
+
+    <style name="TextAppearance.SpaceX.Headline2" parent="TextAppearance.MaterialComponents.Headline2">
+        <item name="fontFamily">@font/space_mono</item>
+    </style>
+
+    <style name="TextAppearance.SpaceX.Headline3" parent="TextAppearance.MaterialComponents.Headline3">
+        <item name="fontFamily">@font/space_mono</item>
+    </style>
+
+    <style name="TextAppearance.SpaceX.Headline4" parent="TextAppearance.MaterialComponents.Headline4">
+        <item name="fontFamily">@font/space_mono</item>
+    </style>
+
+    <style name="TextAppearance.SpaceX.Headline5" parent="TextAppearance.MaterialComponents.Headline5">
+        <item name="fontFamily">@font/space_mono</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="TextAppearance.SpaceX.Headline6" parent="TextAppearance.MaterialComponents.Headline6">
+        <item name="fontFamily">@font/space_mono</item>
+    </style>
+
+    <style name="TextAppearance.SpaceX.Overline1" parent="TextAppearance.MaterialComponents.Overline">
+        <item name="fontFamily">@font/space_mono</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">?attr/colorSecondary</item>
+    </style>
+
+    <style name="TextAppearance.SpaceX.Overline2" parent="TextAppearance.MaterialComponents.Overline">
+        <item name="fontFamily">@font/space_mono</item>
+    </style>
+
+    <style name="Widget.SpaceX.Error.Card" parent="Widget.MaterialComponents.CardView">
+        <item name="cardBackgroundColor">?attr/colorError</item>
+        <item name="cardCornerRadius">4dp</item>
+        <item name="cardElevation">4dp</item>
+    </style>
+
+    <style name="TextAppearance.SpaceX.Error.Main" parent="TextAppearance.SpaceX.Headline6">
+        <item name="android:textColor">?attr/colorOnError</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="TextAppearance.SpaceX.Loading.Main" parent="TextAppearance.SpaceX.Headline6">
+        <item name="android:textColor">?attr/colorOnPrimary</item>
+    </style>
+
+    <style name="Widget.SpaceX.CardView" parent="Widget.MaterialComponents.CardView">
+        <item name="cardCornerRadius">4dp</item>
+        <item name="cardElevation">4dp</item>
+    </style>
+
+    <style name="Widget.SpaceX.Launch.Card" parent="Widget.SpaceX.CardView">
+        <item name="cardBackgroundColor">?attr/colorPrimary</item>
+    </style>
+
+    <style name="Widget.SpaceX.Launch.DetailCard" parent="Widget.SpaceX.CardView">
+        <item name="cardBackgroundColor">?attr/colorPrimaryVariant</item>
+    </style>
+
+    <style name="TextAppearance.SpaceX.Launch.Overline" parent="TextAppearance.SpaceX.Overline1">
+        <item name="android:textSize">10sp</item>
+        <item name="android:textColor">?attr/colorOnPrimary</item>
+    </style>
+
+    <style name="TextAppearance.SpaceX.Launch.Headline" parent="TextAppearance.SpaceX.Headline5">
+        <item name="android:textColor">?attr/colorOnPrimary</item>
+    </style>
+
+    <style name="TextAppearance.SpaceX.Launch.Subtitle" parent="TextAppearance.MaterialComponents.Subtitle1">
+        <item name="android:textColor">?attr/colorOnPrimary</item>
+        <item name="fontFamily">@font/space_mono</item>
+    </style>
+
+    <style name="TextAppearance.SpaceX.Launch.Subtitle.Bold" parent="TextAppearance.MaterialComponents.Subtitle1">
+        <item name="android:textColor">?attr/colorOnPrimary</item>
+        <item name="fontFamily">@font/space_mono</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="TextAppearance.SpaceX.Launch.Body" parent="TextAppearance.MaterialComponents.Body1">
+        <item name="android:textColor">?attr/colorOnPrimary</item>
+        <item name="fontFamily">@font/space_mono</item>
+    </style>
+
+    <style name="TextAppearance.SpaceX.LinkPreview.Title" parent="TextAppearance.MaterialComponents.Headline6">
+        <item name="android:textSize">28sp</item>
+        <item name="android:textColor">?attr/colorOnPrimary</item>
+    </style>
+
+    <style name="TextAppearance.SpaceX.LinkPreview.Description" parent="TextAppearance.MaterialComponents.Body2">
+        <item name="android:textColor">?attr/colorOnPrimary</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="TextAppearance.SpaceX.LinkPreview.LinkName" parent="TextAppearance.MaterialComponents.Overline">
+        <item name="android:textColor">?attr/colorOnPrimary</item>
+    </style>
+
+    <style name="progressBar" parent="@style/Theme.AppCompat">
+        <item name="colorAccent">@color/colorSecondary</item>
+    </style>
+
+</resources>

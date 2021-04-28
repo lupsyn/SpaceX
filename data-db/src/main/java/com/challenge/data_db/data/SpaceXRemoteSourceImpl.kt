@@ -11,7 +11,9 @@ import kotlinx.coroutines.flow.asFlow
 
 @FlowPreview
 @ExperimentalCoroutinesApi
-class SpaceXRemoteSourceImpl() : SpaceXRemoteSource {
+class SpaceXRemoteSourceImpl(
+
+) : SpaceXRemoteSource {
 
     private val companyInfoChannel = ConflatedBroadcastChannel<CompanyInfoRepositoryModel>()
     private val launchesChannel = ConflatedBroadcastChannel<List<LaunchRepositoryModel>>()

@@ -2,6 +2,11 @@ package com.challenge.data_db.model
 
 import org.joda.time.DateTime
 
+data class LaunchModelEntities(
+    val list: List<LaunchRepositoryModelEntity>,
+    val timeStamp: Long
+)
+
 data class LaunchRepositoryModelEntity(
     val missionName: String,
     val launchDateLocal: DateTime,

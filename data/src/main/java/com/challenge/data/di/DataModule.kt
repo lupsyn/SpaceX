@@ -8,7 +8,7 @@ import com.challenge.data.mapper.LaunchesRepositoryToDomainModelMapperImpl
 import com.challenge.data.repository.SpaceXRepositoryImpl
 import com.challenge.domain.SpaceXRepository
 
-object SpaceXRepositoryModule {
+object DataModule {
 
     fun getSpaceXRepository(
         spaceXRemoteSource: SpaceXRemoteSource,

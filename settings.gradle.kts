@@ -9,5 +9,6 @@ include(
     ":data",
     ":data-db",
     ":data-api",
+    ":presentation",
     ":navigation"
 )

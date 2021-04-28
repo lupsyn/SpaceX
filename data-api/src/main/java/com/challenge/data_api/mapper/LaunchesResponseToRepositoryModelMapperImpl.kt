@@ -9,8 +9,6 @@ interface LaunchesResponseToRepositoryModelMapper {
     fun toRepositoryModel(launchesResponse: List<LaunchesResponse>): List<LaunchRepositoryModel>
 }
 
-const val DEFAULT_PATCH = "https://images2.imgbox.com/b0/fd/86Jem1C5_o.png"
-
 class LaunchesResponseToRepositoryModelMapperImpl(
     private val dateFormatter: DateFormatter
 ) :
@@ -21,7 +19,7 @@ class LaunchesResponseToRepositoryModelMapperImpl(
         return launchesResponse.map { launchResponse ->
 
             val linksRepositoryModel = LinksRepositoryModel(
-                missionPatchSmall = launchResponse.links.missionPatchSmall ?: DEFAULT_PATCH,
+                missionPatchSmall = launchResponse.links.missionPatchSmall ?: "",
                 wikipedia = launchResponse.links.wikipedia.orEmpty(),
                 videoLink = launchResponse.links.videoLink.orEmpty()
             )

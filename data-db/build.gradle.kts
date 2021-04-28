@@ -1,6 +1,12 @@
+import com.challenge.android.plugin.BuildType
+
 plugins {
-    id("com.android.library")
-    id("com.challenge.android.plugin")
+    id(Plugins.androidLibrary)
+    id(Plugins.challengePlugin)
+}
+
+androidPlugin {
+    buildType = BuildType.Library
 }
 
 dependencies {
