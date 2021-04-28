@@ -1,5 +1,6 @@
 package com.challenge.data_api.di
 
+import android.content.Context
 import com.challenge.data.SpaceXRemoteSource
 import com.challenge.data_api.ApiService
 import com.challenge.data_api.data.SpaceXRemoteSourceImpl
@@ -26,10 +27,12 @@ object ApiModule {
     fun getDateFormatter(): DateFormatter =
         DateFormatterImpl()
 
-    fun getApi(): ApiService = getRetrofit().create(ApiService::class.java)
+    fun getApi(applicationContext: Context): ApiService =
+        getRetrofit(applicationContext).create(ApiService::class.java)
 
-    private fun getRetrofit(): Retrofit = NetworkModule.getRetrofitBuilder()
-        .client(NetworkModule.getHttpBuilder().build())
-        .build()
+    private fun getRetrofit(applicationContext: Context): Retrofit =
+        NetworkModule.getRetrofitBuilder()
+            .client(NetworkModule.getHttpBuilder(applicationContext).build())
+            .build()
 
 }

@@ -44,14 +44,14 @@ class GetLaunchesImplTest {
                     "missionName",
                     buildDate("2019-12-11T12:00:00.000Z"),
                     RocketDomainModel("rocketName", "rocketType"),
-                    LinksDomainModel("patchLink", "wikipediaLink", "videoLink"),
+                    LinksDomainModel("patchLink", "wikipediaLink", "videoLink","redditLink"),
                     false
                 ),
                 LaunchDomainModel(
                     "missionName2",
                     buildDate("2020-12-07T12:00:00.000Z"),
                     RocketDomainModel("rocketName2", "rocketType2"),
-                    LinksDomainModel("patchLink2", "wikipediaLink2", "videoLink2"),
+                    LinksDomainModel("patchLink2", "wikipediaLink2", "videoLink2","redditLink"),
                     false
                 )
             )
@@ -62,14 +62,14 @@ class GetLaunchesImplTest {
                     "missionName",
                     buildDate("2019-12-11T12:00:00.000Z"),
                     RocketDomainModel("rocketName", "rocketType"),
-                    LinksDomainModel("patchLink", "wikipediaLink", "videoLink"),
+                    LinksDomainModel("patchLink", "wikipediaLink", "videoLink","redditLink"),
                     false
                 ),
                 LaunchDomainModel(
                     "missionName2",
                     buildDate("2020-12-07T12:00:00.000Z"),
                     RocketDomainModel("rocketName2", "rocketType2"),
-                    LinksDomainModel("patchLink2", "wikipediaLink2", "videoLink2"),
+                    LinksDomainModel("patchLink2", "wikipediaLink2", "videoLink2","redditLink"),
                     false
                 )
             )

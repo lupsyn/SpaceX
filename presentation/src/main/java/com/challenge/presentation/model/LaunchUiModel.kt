@@ -18,5 +18,6 @@ data class RocketUiModel(
 data class LinksUiModel(
     val missionPatchSmall: String,
     val wikipedia: String,
-    val videoLink: String
+    val videoLink: String,
+    val reeditLink: String
 )

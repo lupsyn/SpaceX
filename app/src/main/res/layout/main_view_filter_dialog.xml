@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/marginLarge"
+    android:background="@color/colorPrimary">
+
+    <TextView
+        android:id="@+id/dialog_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/marginSmall"
+        android:gravity="center"
+        android:text="@string/dialog_title"
+        android:textAppearance="@style/TextAppearance.SpaceX.Launch.Subtitle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/dialog_year"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/marginLarge"
+        android:layout_marginTop="@dimen/marginLarge"
+        android:layout_marginEnd="@dimen/marginLarge"
+        android:hint="@string/dialog_year"
+        android:inputType="number"
+        android:textAppearance="@style/TextAppearance.SpaceX.Launch.Subtitle"
+        android:textColorHint="@color/colorOnPrimaryHighEmp"
+        app:layout_constraintEnd_toStartOf="@+id/order_toggle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dialog_title"
+        tools:ignore="Autofill" />
+
+    <TextView
+        android:id="@+id/dialog_filter_criteria"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/marginMedium"
+        android:layout_marginEnd="@dimen/marginLarge"
+        android:gravity="end"
+        android:text="@string/dialog_order_criteria"
+        android:textAppearance="@style/TextAppearance.SpaceX.Launch.Subtitle"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/order_toggle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/dialog_year"
+        app:layout_constraintTop_toBottomOf="@+id/dialog_title" />
+
+    <androidx.appcompat.widget.SwitchCompat
+        android:id="@+id/order_toggle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/marginLarge"
+        android:layout_marginEnd="@dimen/marginLarge"
+        android:src="@drawable/ic_wikipedia"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/dialog_year"
+        app:layout_constraintTop_toBottomOf="@+id/dialog_title" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

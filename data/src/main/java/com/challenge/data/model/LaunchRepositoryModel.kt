@@ -18,5 +18,6 @@ data class RocketRepositoryModel(
 data class LinksRepositoryModel(
     val missionPatchSmall: String,
     val wikipedia: String,
-    val videoLink: String
+    val videoLink: String,
+    val reeditLink: String
 )

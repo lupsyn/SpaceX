@@ -22,7 +22,7 @@ sealed class TransientUIState {
 }
 
 fun MutableLiveData<TransientUIState>.emit(throwable: Throwable) {
-    this.value = TransientUIState.ErrorUiState(throwable.toString())
+    this.value = TransientUIState.ErrorUiState(throwable.message.orEmpty())
 }
 
 fun MutableLiveData<TransientUIState>.loading() {

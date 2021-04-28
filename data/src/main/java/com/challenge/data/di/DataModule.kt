@@ -1,5 +1,6 @@
 package com.challenge.data.di
 
+import com.challenge.data.SpaceXLocalSource
 import com.challenge.data.SpaceXRemoteSource
 import com.challenge.data.mapper.CompanyInfoRepositoryToDomainModelMapper
 import com.challenge.data.mapper.CompanyInfoRepositoryToDomainModelMapperImpl
@@ -12,10 +13,12 @@ object DataModule {
 
     fun getSpaceXRepository(
         spaceXRemoteSource: SpaceXRemoteSource,
+        spaceXLocalSource: SpaceXLocalSource,
         companyInfoRepositoryToDomainModelMapper: CompanyInfoRepositoryToDomainModelMapper,
         launchesRepositoryToDomainModelMapper: LaunchesRepositoryToDomainModelMapper
     ): SpaceXRepository = SpaceXRepositoryImpl(
         spaceXRemoteSource,
+        spaceXLocalSource,
         companyInfoRepositoryToDomainModelMapper,
         launchesRepositoryToDomainModelMapper
     )

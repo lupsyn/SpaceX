@@ -42,14 +42,14 @@ class LaunchesDomainToUiModelMapperTest {
                 "missionName",
                 buildDate("2019-12-11T12:00:00.000Z"),
                 RocketDomainModel("rocketName", "rocketType"),
-                LinksDomainModel("patchLink", "wikipediaLink", "videoLink"),
+                LinksDomainModel("patchLink", "wikipediaLink", "videoLink", "reeditLink"),
                 false
             ),
             LaunchDomainModel(
                 "missionName2",
                 buildDate("2020-12-07T12:00:00.000Z"),
                 RocketDomainModel("rocketName2", "rocketType2"),
-                LinksDomainModel("patchLink2", "wikipediaLink2", "videoLink2"),
+                LinksDomainModel("patchLink2", "wikipediaLink2", "videoLink2", "reeditLink"),
                 false
             )
         )
@@ -61,7 +61,7 @@ class LaunchesDomainToUiModelMapperTest {
                 true,
                 "0",
                 RocketUiModel("rocketName", "rocketType"),
-                LinksUiModel("patchLink", "wikipediaLink", "videoLink"),
+                LinksUiModel("patchLink", "wikipediaLink", "videoLink", "reeditLink"),
                 false
             ),
             LaunchUiModel(
@@ -70,7 +70,7 @@ class LaunchesDomainToUiModelMapperTest {
                 false,
                 "361",
                 RocketUiModel("rocketName2", "rocketType2"),
-                LinksUiModel("patchLink2", "wikipediaLink2", "videoLink2"),
+                LinksUiModel("patchLink2", "wikipediaLink2", "videoLink2", "reeditLink"),
                 false
             )
         )
@@ -106,7 +106,7 @@ class LaunchesDomainToUiModelMapperTest {
                 "missionName",
                 buildDate("2019-12-13T13:00:00.000Z"),
                 RocketDomainModel("rocketName", "rocketType"),
-                LinksDomainModel("patchLink", "wikipediaLink", "videoLink"),
+                LinksDomainModel("patchLink", "wikipediaLink", "videoLink", "reeditLink"),
                 true
             )
         )
@@ -117,7 +117,7 @@ class LaunchesDomainToUiModelMapperTest {
                 false,
                 "1",
                 RocketUiModel("rocketName", "rocketType"),
-                LinksUiModel("patchLink", "wikipediaLink", "videoLink"),
+                LinksUiModel("patchLink", "wikipediaLink", "videoLink", "reeditLink"),
                 true
             )
         )

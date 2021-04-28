@@ -1,14 +1,15 @@
 package com.challenge.data_api.di
 
 import android.content.Context
-import android.net.ConnectivityManager
 import com.challenge.data_api.BuildConfig
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
+import okhttp3.Cache
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import java.io.File
 import java.util.concurrent.TimeUnit
 
 object NetworkModule {
@@ -21,7 +22,7 @@ object NetworkModule {
         .baseUrl(baseUrl)
         .addConverterFactory(gsonConverterFactory)
 
-    fun getHttpBuilder() =
+    fun getHttpBuilder(application: Context) =
         OkHttpClient.Builder().apply {
             if (BuildConfig.DEBUG) {
                 val httpLoggingInterceptor = HttpLoggingInterceptor()
@@ -31,7 +32,15 @@ object NetworkModule {
 
             readTimeout(RETROFIT_TIMEOUT, TimeUnit.SECONDS)
             connectTimeout(RETROFIT_TIMEOUT, TimeUnit.SECONDS)
+            cache(getOkHttpCache(application))
         }
+
+
+    private fun getOkHttpCache(application: Context): Cache {
+        val cacheDirectory = File(application.cacheDir, HTTP_CACHE_DIR)
+        return Cache(cacheDirectory, HTTP_CACHE_SIZE_IN_BYTES)
+
+    }
 
     private fun getBaseUrl(baseUrlOverride: String? = null) =
         baseUrlOverride ?: "https://api.spacexdata.com/v3/"
@@ -41,6 +50,8 @@ object NetworkModule {
     private fun getGsonConverterFactory(gson: Gson): GsonConverterFactory =
         GsonConverterFactory.create(gson)
 
-    fun getConnectivityManager(context: Context): ConnectivityManager =
-        context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+    private const val KILOBYTE_IN_BYTES = 1024
+    private const val MEGABYTE_IN_BYTES = 1024 * KILOBYTE_IN_BYTES
+    private const val HTTP_CACHE_DIR = "httpcachedir"
+    private const val HTTP_CACHE_SIZE_IN_BYTES = 10L * MEGABYTE_IN_BYTES
 }

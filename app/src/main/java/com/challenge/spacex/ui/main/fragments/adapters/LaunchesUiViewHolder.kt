@@ -33,6 +33,7 @@ class LaunchesUiViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         } else {
             Picasso.get()
                 .load(uiModel.links.missionPatchSmall)
+                .placeholder(R.drawable.ic_rocket)
                 .resize(150, 150)
                 .centerCrop()
                 .into(missionPatch)

@@ -18,7 +18,8 @@ class LaunchesRepositoryToDomainModelMapperImpl :
             val linksDomainModel = LinksDomainModel(
                 missionPatchSmall = launchRepositoryModel.links.missionPatchSmall,
                 wikipedia = launchRepositoryModel.links.wikipedia,
-                videoLink = launchRepositoryModel.links.videoLink
+                videoLink = launchRepositoryModel.links.videoLink,
+                reeditLink = launchRepositoryModel.links.reeditLink
             )
 
             val rocketDomainModel = RocketDomainModel(

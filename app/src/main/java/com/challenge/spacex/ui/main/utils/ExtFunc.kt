@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.core.view.children
 import androidx.core.view.isVisible
 import androidx.interpolator.view.animation.FastOutSlowInInterpolator
+import androidx.recyclerview.widget.RecyclerView
 
 /**
  * Fade a view to visible or gone. This function is idempotent - it can be called over and over again with the same
@@ -57,4 +58,43 @@ fun View.cancelFadeRecursively() {
 
 private inline fun <reified T> Any.castOrNull(): T? {
     return this as? T
+}
+
+fun View.toggleVisibility(visible: Boolean) {
+    if (visible) show() else gone()
+}
+
+/**
+ * Set the view's visibility to [View.VISIBLE].
+ */
+fun View.show() {
+    visibility = View.VISIBLE
+}
+
+fun View.gone() {
+    visibility = View.GONE
+}
+
+fun <H : RecyclerView.ViewHolder,
+        T : RecyclerView.Adapter<H>,
+        L : RecyclerView.LayoutManager>
+        RecyclerView.init(
+    newLayoutManager: () -> L,
+    newAdapter: () -> T?,
+    otherOptions: (RecyclerView.(T?) -> Unit)? = null
+) {
+    this.apply {
+        val newInstanceOfAdapter = newAdapter()
+        val llManager = newLayoutManager()
+
+        if (this.layoutManager == null) {
+            this.layoutManager = llManager
+        }
+
+        if (this.adapter == null) {
+            this.adapter = newInstanceOfAdapter
+        }
+
+        otherOptions?.let { this.it(newInstanceOfAdapter) }
+    }
 }

@@ -17,6 +17,13 @@ dependencies {
     api(Dependencies.Retrofit.retrofitConverterGson)
     api(Dependencies.okHttpLoggingInterceptor)
 
+    implementation(Dependencies.AndroidX.Room.runtime)
+    kapt(Dependencies.AndroidX.Room.compiler)
+    implementation(Dependencies.AndroidX.Room.ktx)
+    implementation(Dependencies.jodaTime)
+    implementation(Dependencies.jodaTime)
+
     implementation(Dependencies.jodaTime)
     testImplementation(Dependencies.jodaTime)
+    testImplementation(Dependencies.AndroidX.Room.test)
 }

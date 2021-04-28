@@ -27,28 +27,28 @@ class LaunchesDomainFilterImplTest {
                 "missionName0",
                 buildDate("2019-12-12T12:00:00.000Z"),
                 RocketDomainModel("rocketName", "rocketType"),
-                LinksDomainModel("patchLink", "wikipediaLink", "videoLink"),
+                LinksDomainModel("patchLink", "wikipediaLink", "videoLink", "redditLink"),
                 false
             ),
             LaunchDomainModel(
                 "missionName1",
                 buildDate("2018-12-16T12:00:00.000Z"),
                 RocketDomainModel("rocketName", "rocketType"),
-                LinksDomainModel("patchLink", "wikipediaLink", "videoLink"),
+                LinksDomainModel("patchLink", "wikipediaLink", "videoLink", "redditLink"),
                 true
             ),
             LaunchDomainModel(
                 "missionName2",
                 buildDate("2019-12-11T12:00:00.000Z"),
                 RocketDomainModel("rocketName", "rocketType"),
-                LinksDomainModel("patchLink", "wikipediaLink", "videoLink"),
+                LinksDomainModel("patchLink", "wikipediaLink", "videoLink", "redditLink"),
                 true
             ),
             LaunchDomainModel(
                 "missionName3",
                 buildDate("2019-11-13T12:00:00.000Z"),
                 RocketDomainModel("rocketName", "rocketType"),
-                LinksDomainModel("patchLink", "wikipediaLink", "videoLink"),
+                LinksDomainModel("patchLink", "wikipediaLink", "videoLink", "redditLink"),
                 true
             )
         )
@@ -57,14 +57,14 @@ class LaunchesDomainFilterImplTest {
                 "missionName3",
                 buildDate("2019-11-13T12:00:00.000Z"),
                 RocketDomainModel("rocketName", "rocketType"),
-                LinksDomainModel("patchLink", "wikipediaLink", "videoLink"),
+                LinksDomainModel("patchLink", "wikipediaLink", "videoLink", "redditLink"),
                 true
             ),
             LaunchDomainModel(
                 "missionName2",
                 buildDate("2019-12-11T12:00:00.000Z"),
                 RocketDomainModel("rocketName", "rocketType"),
-                LinksDomainModel("patchLink", "wikipediaLink", "videoLink"),
+                LinksDomainModel("patchLink", "wikipediaLink", "videoLink", "redditLink"),
                 true
             )
         )
@@ -86,28 +86,28 @@ class LaunchesDomainFilterImplTest {
                 "missionName0",
                 buildDate("2019-12-12T12:00:00.000Z"),
                 RocketDomainModel("rocketName", "rocketType"),
-                LinksDomainModel("patchLink", "wikipediaLink", "videoLink"),
+                LinksDomainModel("patchLink", "wikipediaLink", "videoLink", "redditLink"),
                 false
             ),
             LaunchDomainModel(
                 "missionName1",
                 buildDate("2018-12-16T12:00:00.000Z"),
                 RocketDomainModel("rocketName", "rocketType"),
-                LinksDomainModel("patchLink", "wikipediaLink", "videoLink"),
+                LinksDomainModel("patchLink", "wikipediaLink", "videoLink", "redditLink"),
                 true
             ),
             LaunchDomainModel(
                 "missionName2",
                 buildDate("2019-12-11T12:00:00.000Z"),
                 RocketDomainModel("rocketName", "rocketType"),
-                LinksDomainModel("patchLink", "wikipediaLink", "videoLink"),
+                LinksDomainModel("patchLink", "wikipediaLink", "videoLink", "redditLink"),
                 true
             ),
             LaunchDomainModel(
                 "missionName3",
                 buildDate("2019-11-13T12:00:00.000Z"),
                 RocketDomainModel("rocketName", "rocketType"),
-                LinksDomainModel("patchLink", "wikipediaLink", "videoLink"),
+                LinksDomainModel("patchLink", "wikipediaLink", "videoLink", "redditLink"),
                 true
             )
         )
@@ -116,14 +116,14 @@ class LaunchesDomainFilterImplTest {
                 "missionName2",
                 buildDate("2019-12-11T12:00:00.000Z"),
                 RocketDomainModel("rocketName", "rocketType"),
-                LinksDomainModel("patchLink", "wikipediaLink", "videoLink"),
+                LinksDomainModel("patchLink", "wikipediaLink", "videoLink", "redditLink"),
                 true
             ),
             LaunchDomainModel(
                 "missionName3",
                 buildDate("2019-11-13T12:00:00.000Z"),
                 RocketDomainModel("rocketName", "rocketType"),
-                LinksDomainModel("patchLink", "wikipediaLink", "videoLink"),
+                LinksDomainModel("patchLink", "wikipediaLink", "videoLink", "redditLink"),
                 true
             )
         )

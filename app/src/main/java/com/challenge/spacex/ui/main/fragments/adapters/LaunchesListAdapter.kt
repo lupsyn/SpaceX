@@ -7,7 +7,8 @@ import androidx.recyclerview.widget.ListAdapter
 import com.challenge.presentation.model.LaunchUiModel
 import com.challenge.spacex.R
 
-class LaunchesListAdapter :
+class LaunchesListAdapter(private val listener: ClickListener) :
+
     ListAdapter<LaunchUiModel, LaunchesUiViewHolder>(LaunchesUiDiffUtils()) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LaunchesUiViewHolder =
         LaunchesUiViewHolder(
@@ -17,6 +18,9 @@ class LaunchesListAdapter :
 
     override fun onBindViewHolder(holder: LaunchesUiViewHolder, position: Int) {
         holder.onBind(getItem(position))
+        holder.itemView.setOnClickListener {
+            listener.onItemClicked(getItem(position).links)
+        }
     }
 }
 

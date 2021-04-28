@@ -20,7 +20,8 @@ class LaunchesDomainToUiModelMapperImpl(
         val linksUiModel = LinksUiModel(
             missionPatchSmall = launchDomainModel.links.missionPatchSmall,
             wikipedia = launchDomainModel.links.wikipedia,
-            videoLink = launchDomainModel.links.videoLink
+            videoLink = launchDomainModel.links.videoLink,
+            reeditLink = launchDomainModel.links.reeditLink
         )
 
         val rocketUiModel = RocketUiModel(

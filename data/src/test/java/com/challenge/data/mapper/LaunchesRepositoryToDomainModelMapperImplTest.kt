@@ -29,31 +29,50 @@ class LaunchesRepositoryToDomainModelMapperImplTest(
                             "missionName",
                             buildDate("11-12-2019"),
                             RocketRepositoryModel("rocketName", "rocketType"),
-                            LinksRepositoryModel("patchLink", "wikipediaLink", "videoLink"),
+                            LinksRepositoryModel(
+                                "patchLink",
+                                "wikipediaLink",
+                                "videoLink",
+                                "redditLink"
+                            ),
                             false
                         ),
                         LaunchRepositoryModel(
                             "missionName2",
                             buildDate("11-12-2020"),
                             RocketRepositoryModel("rocketName2", "rocketType2"),
-                            LinksRepositoryModel("patchLink2", "wikipediaLink2", "videoLink2"),
+                            LinksRepositoryModel(
+                                "patchLink2",
+                                "wikipediaLink2",
+                                "videoLink2",
+                                "redditLink"
+                            ),
                             false
                         )
-                    )
-                    ,
+                    ),
                     listOf(
                         LaunchDomainModel(
                             "missionName",
                             buildDate("11-12-2019"),
                             RocketDomainModel("rocketName", "rocketType"),
-                            LinksDomainModel("patchLink", "wikipediaLink", "videoLink"),
+                            LinksDomainModel(
+                                "patchLink",
+                                "wikipediaLink",
+                                "videoLink",
+                                "redditLink"
+                            ),
                             false
                         ),
                         LaunchDomainModel(
                             "missionName2",
                             buildDate("11-12-2020"),
                             RocketDomainModel("rocketName2", "rocketType2"),
-                            LinksDomainModel("patchLink2", "wikipediaLink2", "videoLink2"),
+                            LinksDomainModel(
+                                "patchLink2",
+                                "wikipediaLink2",
+                                "videoLink2",
+                                "redditLink"
+                            ),
                             false
                         )
                     )
@@ -64,7 +83,12 @@ class LaunchesRepositoryToDomainModelMapperImplTest(
                             "missionName",
                             buildDate("01-02-2010"),
                             RocketRepositoryModel("rocketName", "rocketType"),
-                            LinksRepositoryModel("patchLink", "wikipediaLink", "videoLink"),
+                            LinksRepositoryModel(
+                                "patchLink",
+                                "wikipediaLink",
+                                "videoLink",
+                                "redditLink"
+                            ),
                             true
                         )
                     ),
@@ -73,7 +97,12 @@ class LaunchesRepositoryToDomainModelMapperImplTest(
                             "missionName",
                             buildDate("01-02-2010"),
                             RocketDomainModel("rocketName", "rocketType"),
-                            LinksDomainModel("patchLink", "wikipediaLink", "videoLink"),
+                            LinksDomainModel(
+                                "patchLink",
+                                "wikipediaLink",
+                                "videoLink",
+                                "redditLink"
+                            ),
                             true
                         )
                     )

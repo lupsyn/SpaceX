@@ -15,17 +15,16 @@ class LaunchesDomainFilterImpl : LaunchesDomainFilter {
         }
         order(launches, ascendantOrder)
     } else {
-        launchesDomainModel
+        order(launchesDomainModel, ascendantOrder)
     }
 
     private fun order(
         launches: List<LaunchDomainModel>,
         ascendantOrder: Boolean
-    ): List<LaunchDomainModel> = if (ascendantOrder) {
-        launches.sortedBy { launchDomainModel -> launchDomainModel.launchDate.monthOfYear }
-            .sortedBy { launchDomainModel -> launchDomainModel.launchDate.dayOfMonth }
-    } else {
-        launches.sortedByDescending { launchDomainModel -> launchDomainModel.launchDate.monthOfYear }
-            .sortedByDescending { launchDomainModel -> launchDomainModel.launchDate.dayOfMonth }
-    }
+    ): List<LaunchDomainModel> =
+        if (ascendantOrder) {
+            launches.sortedByDescending { launchDomainModel -> launchDomainModel.launchDate }
+        } else {
+            launches.sortedBy { launchDomainModel -> launchDomainModel.launchDate }
+        }
 }

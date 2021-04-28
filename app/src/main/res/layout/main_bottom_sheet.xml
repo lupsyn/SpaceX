@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:padding="8dp"
+        android:text="@string/info_on_the_following_sources"
+        android:textAppearance="@style/TextAppearance.SpaceX.Launch.Subtitle" />
+
+
+    <LinearLayout
+        android:id="@+id/wikipedia"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?android:attr/selectableItemBackground"
+        android:clickable="true"
+        android:focusable="true"
+        android:orientation="horizontal"
+        android:padding="8dp">
+
+        <ImageView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_margin="8dp"
+            android:src="@drawable/ic_wikipedia" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:padding="8dp"
+            android:text="@string/wikipedia"
+            android:textAppearance="@style/TextAppearance.SpaceX.Launch.Subtitle" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/youtube"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?android:attr/selectableItemBackground"
+        android:orientation="horizontal"
+        android:padding="8dp">
+
+        <ImageView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_margin="8dp"
+            android:src="@drawable/ic_youtube" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:padding="8dp"
+            android:text="@string/youtube"
+            android:textAppearance="@style/TextAppearance.SpaceX.Launch.Subtitle" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/reddit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?android:attr/selectableItemBackground"
+        android:clickable="true"
+        android:focusable="true"
+        android:orientation="horizontal"
+        android:padding="8dp">
+
+        <ImageView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_margin="8dp"
+            android:src="@drawable/ic_reddit" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:padding="8dp"
+            android:text="@string/reedit"
+            android:textAppearance="@style/TextAppearance.SpaceX.Launch.Subtitle" />
+    </LinearLayout>
+</LinearLayout>

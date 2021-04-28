@@ -1,5 +1,6 @@
 package com.challenge.presentation
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -14,6 +15,7 @@ import com.challenge.presentation.state.TransientUIState
 import com.challenge.presentation.state.displayData
 import com.challenge.presentation.state.emit
 import com.challenge.presentation.state.loading
+import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.collect
@@ -22,8 +24,6 @@ import kotlinx.coroutines.launch
 abstract class MainViewModel : ViewModel() {
     abstract fun launches(yearFilterCriteria: Int = -1, ascendantOrder: Boolean = false)
     abstract fun companyInfo()
-    abstract fun openLink(link: String)
-    abstract fun onFilterClicked()
 
     abstract val companyInfo: LiveData<CompanyInfoUiModel>
     abstract val launches: LiveData<List<LaunchUiModel>>
@@ -68,22 +68,31 @@ class MainViewModelImpl(
     }
 
     override fun launches(yearFilterCriteria: Int, ascendantOrder: Boolean) {
-        bodyTransientMutableUiState.loading()
         viewModelScope.launch {
+            bodyTransientMutableUiState.loading()
             getLaunches.execute(yearFilterCriteria, ascendantOrder)
                 .catch { throwable -> bodyTransientMutableUiState.emit(throwable) }
                 .collect { launchesDomainModel ->
                     val launchesUiModel =
                         launchesDomainToUiModelMapper.toUiModel(launchesDomainModel)
-
                     launchesMutableLiveData.value = launchesUiModel
-                    bodyTransientMutableUiState.displayData()
+                    if (launchesUiModel.isEmpty())
+                        bodyTransientMutableUiState.emit(Throwable("empty state"))
+                    else {
+                        bodyTransientMutableUiState.displayData()
+                    }
                 }
         }
     }
 
+    private val errorHandler = CoroutineExceptionHandler { _, exception ->
+        Log.e("ciccio", "Pasticcio")
+
+    }
+
+
     override fun companyInfo() {
-        viewModelScope.launch {
+        viewModelScope.launch(errorHandler) {
             headerTransientMutableUiState.loading()
             getCompanyInfo.execute()
                 .catch { throwable -> headerTransientMutableUiState.emit(throwable) }
@@ -95,13 +104,5 @@ class MainViewModelImpl(
                     headerTransientMutableUiState.displayData()
                 }
         }
-    }
-
-    override fun openLink(link: String) {
-
-    }
-
-    override fun onFilterClicked() {
-
     }
 }

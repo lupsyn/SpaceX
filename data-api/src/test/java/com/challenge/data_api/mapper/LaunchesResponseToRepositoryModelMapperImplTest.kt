@@ -36,7 +36,7 @@ class LaunchesResponseToRepositoryModelMapperImplTest(
                                 "videoLink",
                                 "articleLink",
                                 "pressKitLink",
-                                "redditLink"
+                                ""
                             ),
                             upcoming = false,
                             tbd = false,
@@ -53,7 +53,7 @@ class LaunchesResponseToRepositoryModelMapperImplTest(
                                 "videoLink2",
                                 "articleLink2",
                                 "pressKitLink2",
-                                "redditLink2"
+                                ""
                             ),
                             upcoming = false,
                             tbd = false,
@@ -67,14 +67,24 @@ class LaunchesResponseToRepositoryModelMapperImplTest(
                             "missionName",
                             buildDate("11-12-2020"),
                             RocketRepositoryModel("rocketName", "rocketType"),
-                            LinksRepositoryModel("patchLink", "wikipediaLink", "videoLink"),
+                            LinksRepositoryModel(
+                                "patchLink",
+                                "wikipediaLink",
+                                "videoLink",
+                                ""
+                            ),
                             false
                         ),
                         LaunchRepositoryModel(
                             "missionName2",
                             buildDate("01-01-2021"),
                             RocketRepositoryModel("rocketName2", "rocketType2"),
-                            LinksRepositoryModel("patchLink2", "wikipediaLink2", "videoLink2"),
+                            LinksRepositoryModel(
+                                "patchLink2",
+                                "wikipediaLink2",
+                                "videoLink2",
+                                ""
+                            ),
                             false
                         )
                     )
@@ -98,7 +108,8 @@ class LaunchesResponseToRepositoryModelMapperImplTest(
                             buildDate("01-03-1990"),
                             RocketRepositoryModel("rocketName", "rocketType"),
                             LinksRepositoryModel(
-                                "https://images2.imgbox.com/3c/0e/T8iJcSN3_o.png",
+                                "",
+                                "",
                                 "",
                                 ""
                             ),

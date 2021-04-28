@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">SpaceX</string>
     <string name="headerLaunchMissionPatchContentDescription">Mission patch image</string>
     <string name="launch_data_mission">Mission</string>
@@ -17,4 +17,15 @@
     <string name="company_data">
         %s was founded by  %s in  %s. It has now  %s employees,  %s launch sites, and is valued at USD  %s
     </string>
+    <string name="reedit">Reddit</string>
+    <string name="youtube">Youtube</string>
+    <string name="wikipedia">Wikipedia</string>
+    <string name="article">Article</string>
+    <string name="info_on_the_following_sources">Info on the following sources :</string>
+
+    <string name="dialog_title">Filter by year</string>
+    <string name="dialog_year">YEAR</string>
+    <string name="dialog_ok_button">OK</string>
+    <string name="dialog_cancel_button" tools:ignore="ButtonCase">CANCEL</string>
+    <string name="dialog_order_criteria">ASC/DESC</string>
 </resources>

@@ -11,6 +11,12 @@ android {
         applicationId = AndroidSettings.applicationId
         versionCode = 1
         versionName = "1.0"
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments.putIfAbsent("room.schemaLocation", "$projectDir/schemas")
+            }
+        }
     }
 
     buildFeatures.viewBinding = true
@@ -25,6 +31,7 @@ dependencies {
     implementation(project(ProjectModules.domain))
     implementation(project(ProjectModules.data))
     implementation(project(ProjectModules.api))
+    implementation(project(ProjectModules.db))
     implementation(project(ProjectModules.presentation))
     implementation(project(ProjectModules.navigation))
     implementation(Dependencies.AndroidX.materialDesign)

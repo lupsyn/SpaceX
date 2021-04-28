@@ -31,6 +31,7 @@ object Versions {
     const val constraintLayout = "2.0.4"
     const val materialDesign = "1.3.0"
     const val lifeCycle = "2.3.1"
+    const val room = "2.3.0"
     const val androidxTest = "1.2.0"
     const val espresso = "3.2.0"
     const val androidxJunit = "1.1.1"
@@ -85,6 +86,13 @@ object Dependencies {
             "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.lifeCycle}"
 
         const val browser = "androidx.browser:browser:${Versions.browser}"
+
+        object Room {
+            val runtime = "androidx.room:room-runtime:${Versions.room}"
+            val ktx = "androidx.room:room-ktx:${Versions.room}"
+            val compiler = "androidx.room:room-compiler:${Versions.room}"
+            val test = "androidx.room:room-testing:${Versions.room}"
+        }
 
         object Navigation {
             const val fragmentKtx =
