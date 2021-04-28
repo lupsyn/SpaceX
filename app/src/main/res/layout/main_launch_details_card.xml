@@ -7,21 +7,28 @@
 
     <TextView
         android:id="@+id/widget_launch_details_title"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="@style/TextAppearance.SpaceX.Launch.Subtitle"
+        android:textAppearance="@style/TextAppearance.SpaceX.Launch.CardTitles"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="Mission Name" />
 
     <TextView
         android:id="@+id/widget_launch_details_value"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/marginMedium"
         android:ellipsize="end"
         android:gravity="center"
+        android:maxLines="1"
         android:textAppearance="@style/TextAppearance.SpaceX.Launch.Subtitle.Bold"
+        app:layout_constrainedWidth="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/widget_launch_details_title"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="Rocket" />
+        app:layout_constraintWidth_percent="0.8"
+        tools:text="Very very very very very super very very very very very very long string" />
 
 </merge>

@@ -18,6 +18,8 @@
             android:id="@+id/mission_patch"
             android:layout_width="@dimen/mission_icon_dimen"
             android:layout_height="@dimen/mission_icon_dimen"
+            android:layout_marginStart="@dimen/marginSmall"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="ContentDescription"
@@ -27,36 +29,36 @@
             android:id="@+id/launch_details_container"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/marginSmall"
-            android:layout_marginEnd="@dimen/marginSmall"
+            android:layout_marginStart="@dimen/marginLarge"
+            android:layout_marginEnd="@dimen/marginLarge"
             android:orientation="vertical"
             app:layout_constraintEnd_toStartOf="@+id/view_success"
             app:layout_constraintStart_toEndOf="@+id/mission_patch"
             app:layout_constraintTop_toTopOf="parent">
 
             <com.challenge.spacex.ui.main.fragments.widgets.LineDetailsView
-                android:id="@+id/launch_details_mission"
+                android:id="@+id/details_mission"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toTopOf="parent"
                 app:title="@string/launch_data_mission" />
 
             <com.challenge.spacex.ui.main.fragments.widgets.LineDetailsView
-                android:id="@+id/launch_details_date_time"
+                android:id="@+id/details_date_time"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toBottomOf="@+id/launch_details_mission"
                 app:title="@string/launch_data_date_time" />
 
             <com.challenge.spacex.ui.main.fragments.widgets.LineDetailsView
-                android:id="@+id/launch_details_name_time"
+                android:id="@+id/details_rocket_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toBottomOf="@+id/launch_details_date_time"
                 app:title="@string/launch_data_rocket" />
 
             <com.challenge.spacex.ui.main.fragments.widgets.LineDetailsView
-                android:id="@+id/launch_details_days"
+                android:id="@+id/details_days"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toBottomOf="@+id/launch_details_name_time"
@@ -67,6 +69,8 @@
             android:id="@+id/view_success"
             android:layout_width="@dimen/launch_success_icon_dimen"
             android:layout_height="@dimen/launch_success_icon_dimen"
+            android:layout_marginEnd="@dimen/marginMedium"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="ContentDescription"

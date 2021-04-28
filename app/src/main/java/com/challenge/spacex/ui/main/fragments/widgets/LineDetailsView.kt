@@ -35,6 +35,13 @@ class LineDetailsView @JvmOverloads constructor(
         typedArray.recycle()
     }
 
+    fun setTitle(text: String) {
+        binding.widgetLaunchDetailsTitle.text = text
+    }
+    fun setValue(text: String) {
+        binding.widgetLaunchDetailsValue.text = text
+    }
+
     private fun TypedArray.setTextIfSet(textView: TextView, textViewTextRes: Int) =
         getText(textViewTextRes)?.let(textView::setText)
 }

@@ -13,6 +13,7 @@
         <item name="colorError">@color/colorError</item>
         <item name="colorOnError">@color/colorOnSurfaceHighEmp</item>
         <item name="popupMenuBackground">?attr/colorSurface</item>
+        <item name="android:textColorPrimary">@color/colorOnPrimaryHighEmp</item>
         <item name="textAppearanceHeadline1">@style/TextAppearance.SpaceX.Headline1</item>
         <item name="textAppearanceHeadline2">@style/TextAppearance.SpaceX.Headline2</item>
         <item name="textAppearanceHeadline3">@style/TextAppearance.SpaceX.Headline3</item>

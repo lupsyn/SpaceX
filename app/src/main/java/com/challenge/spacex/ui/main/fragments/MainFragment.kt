@@ -13,9 +13,12 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.NavigationUI
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.challenge.presentation.MainViewModel
-import com.challenge.presentation.state.TransientUIState
+import com.challenge.presentation.model.CompanyInfoUiModel
+import com.challenge.presentation.state.TransientUIState.*
+import com.challenge.spacex.R
 import com.challenge.spacex.databinding.MainFragmentBinding
 import com.challenge.spacex.ui.main.fragments.adapters.LaunchesListAdapter
+import com.challenge.spacex.ui.main.utils.fadeTo
 
 class MainFragment(viewModelFactory: ViewModelProvider.Factory) : Fragment() {
 
@@ -25,6 +28,13 @@ class MainFragment(viewModelFactory: ViewModelProvider.Factory) : Fragment() {
     private val filterButton by lazy { binding.filterToolbar.confirmImageButton }
 
     private val launchesListAdapter by lazy { LaunchesListAdapter() }
+    private val launchesRecyclerView by lazy { binding.bodyContainer.launchesRecyclerView }
+    private val launchesTitle by lazy { binding.bodyContainer.launchesTitle }
+    private val bodyProgressBar by lazy { binding.progressBarBody }
+    private val companyTitle by lazy { binding.headerContainer.companyTitle }
+    private val companyDesc by lazy { binding.headerContainer.companyDescription }
+    private val headerError by lazy { binding.headerContainer.headerErrorDescription }
+    private val bodyError by lazy { binding.bodyContainer.bodyErrorDescription }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -45,7 +55,7 @@ class MainFragment(viewModelFactory: ViewModelProvider.Factory) : Fragment() {
     }
 
     private fun setupRecyclerView() {
-        with(binding.bodyContainer.launchesRecyclerView) {
+        with(launchesRecyclerView) {
             adapter = launchesListAdapter
             layoutManager = LinearLayoutManager(requireContext())
         }
@@ -56,25 +66,84 @@ class MainFragment(viewModelFactory: ViewModelProvider.Factory) : Fragment() {
             launchesListAdapter.submitList(launches)
         })
 
-        viewModel.companyInfo.observe(viewLifecycleOwner, { companyInfo -> })
+        viewModel.companyInfo.observe(
+            viewLifecycleOwner,
+            { companyInfo -> companyDesc.text = getDescriptionText(companyInfo) })
 
         viewModel.bodyTransientUiState.observe(
             viewLifecycleOwner,
             { bodyUiState ->
                 when (bodyUiState) {
-                    TransientUIState.DisplayDataUIState -> binding.bodyContainer.launchesRecyclerView.visibility =
-                        View.VISIBLE
-                    is TransientUIState.ErrorUiState -> binding.bodyContainer.launchesRecyclerView.visibility =
-                        View.VISIBLE
-                    TransientUIState.LoadingUiState -> binding.bodyContainer.launchesRecyclerView.visibility =
-                        View.VISIBLE
+                    is DisplayDataUIState -> handlingBodyDisplayState()
+                    is ErrorUiState -> handlingErrorBodyState()
+                    is LoadingUiState -> handlingLoadingBodyState()
                 }
             })
 
         viewModel.headerTransientUiState.observe(
             viewLifecycleOwner,
-            { headerUiState -> })
+            { headerUiState ->
+                when (headerUiState) {
+                    is DisplayDataUIState -> handlingHeaderDisplayState()
+                    is ErrorUiState -> handlingErrorHeaderState()
+                    is LoadingUiState -> handlingLoadingHeaderState()
+                }
+            })
 
+    }
+
+    private fun handlingLoadingHeaderState() {
+        companyTitle.fadeTo(true)
+        bodyProgressBar.fadeTo(true)
+        bodyError.fadeTo(false)
+        companyDesc.fadeTo(false)
+    }
+
+    private fun handlingErrorHeaderState() {
+        companyTitle.fadeTo(true)
+        bodyProgressBar.fadeTo(false)
+        bodyError.fadeTo(false)
+        companyDesc.fadeTo(false)
+    }
+
+    private fun handlingHeaderDisplayState() {
+        companyTitle.fadeTo(true)
+        bodyProgressBar.fadeTo(false)
+        bodyError.fadeTo(false)
+        companyDesc.fadeTo(true)
+    }
+
+    private fun handlingBodyDisplayState() {
+        launchesTitle.fadeTo(true)
+        bodyProgressBar.fadeTo(false)
+        launchesRecyclerView.fadeTo(true)
+        headerError.fadeTo(false)
+    }
+
+    private fun handlingLoadingBodyState() {
+        launchesTitle.fadeTo(true)
+        bodyProgressBar.fadeTo(true)
+        launchesRecyclerView.fadeTo(false)
+        headerError.fadeTo(false)
+    }
+
+    private fun handlingErrorBodyState() {
+        bodyProgressBar.fadeTo(false)
+        launchesTitle.fadeTo(true)
+        launchesRecyclerView.fadeTo(false)
+        headerError.fadeTo(true)
+    }
+
+    private fun getDescriptionText(companyInfo: CompanyInfoUiModel): String {
+        return String.format(
+            getString(R.string.company_data),
+            companyInfo.name,
+            companyInfo.founder,
+            companyInfo.foundedYear,
+            companyInfo.employees,
+            companyInfo.launchSites,
+            companyInfo.valuation
+        )
     }
 
     private fun setupNavigation() {

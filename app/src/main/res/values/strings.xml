@@ -2,7 +2,7 @@
     <string name="app_name">SpaceX</string>
     <string name="headerLaunchMissionPatchContentDescription">Mission patch image</string>
     <string name="launch_data_mission">Mission</string>
-    <string name="launch_data_date_time">Date/time</string>
+    <string name="launch_data_date_time">Date</string>
     <string name="launch_data_rocket">Rocket</string>
     <string name="launch_data_days">Days</string>
 
@@ -14,4 +14,7 @@
     <string name="body_error_description">Sorry, nothing to show here yet.</string>
     <string name="bottom_sheet_youtube">Youtube</string>
     <string name="bottom_sheet_wikipedia">Wikipedia</string>
+    <string name="company_data">
+        %s was founded by  %s in  %s. It has now  %s employees,  %s launch sites, and is valued at USD  %s
+    </string>
 </resources>

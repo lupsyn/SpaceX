@@ -87,6 +87,12 @@
         <item name="fontFamily">@font/space_mono</item>
     </style>
 
+    <style name="TextAppearance.SpaceX.Launch.CardTitles" parent="TextAppearance.MaterialComponents.Subtitle1">
+        <item name="android:textColor">?attr/colorOnPrimary</item>
+        <item name="android:textSize">10sp</item>
+        <item name="fontFamily">@font/space_mono</item>
+    </style>
+
     <style name="TextAppearance.SpaceX.Launch.Subtitle.Bold" parent="TextAppearance.MaterialComponents.Subtitle1">
         <item name="android:textColor">?attr/colorOnPrimary</item>
         <item name="fontFamily">@font/space_mono</item>
