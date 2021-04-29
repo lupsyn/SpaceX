@@ -8,11 +8,13 @@ import androidx.core.content.ContextCompat
 import com.challenge.spacex.R
 import com.challenge.spacex.ui.main.di.MainActivityModule
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.FlowPreview
 
+@FlowPreview
 @ExperimentalCoroutinesApi
 class MainActivity : AppCompatActivity() {
 
-    private val fragmentFactory by lazy { MainActivityModule.getFragmentFactory(application) }
+    private val fragmentFactory by lazy { MainActivityModule.getFragmentFactory(applicationContext as SpaceXApp) }
     private val navigationController by lazy { MainActivityModule.getNavigationController(this) }
 
     override fun onCreate(savedInstanceState: Bundle?) {

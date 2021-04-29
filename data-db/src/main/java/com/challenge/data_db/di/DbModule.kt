@@ -22,7 +22,9 @@ object DbModule {
         launchesRepositoryToDomainModelMapper
     )
 
-    private fun getDb(context: Context): SpaceXDb = SpaceXdbManager(context).database
+    fun getDb(context: Context): SpaceXDb = SpaceXdbManager(context).database
+
+    fun clearAllTables(context: Context) =  SpaceXdbManager(context).database.clearAllTables()
 
     fun getCompanyInfoRepositoryToDomainModelMapper(): CompanyInfoEntityToRepositoryModelMapper =
         CompanyInfoEntityToRepositoryModelMapperImpl(getDateUtils())

@@ -122,7 +122,7 @@ class MainFragment(viewModelFactory: ViewModelProvider.Factory) : Fragment() {
     private fun handlingErrorHeaderState() {
         bodyProgressBar.fadeTo(false)
         companyTitle.fadeTo(true)
-        headerError.fadeTo(false)
+        headerError.fadeTo(true)
         companyDesc.fadeTo(false)
     }
 
@@ -141,7 +141,6 @@ class MainFragment(viewModelFactory: ViewModelProvider.Factory) : Fragment() {
 
     private fun handlingLoadingBodyState() {
         bodyProgressBar.fadeTo(true)
-//        launchesRecyclerView.fadeTo(false)
         bodyError.fadeTo(false)
     }
 

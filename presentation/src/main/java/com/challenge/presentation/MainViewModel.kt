@@ -1,6 +1,5 @@
 package com.challenge.presentation
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -15,7 +14,6 @@ import com.challenge.presentation.state.TransientUIState
 import com.challenge.presentation.state.displayData
 import com.challenge.presentation.state.emit
 import com.challenge.presentation.state.loading
-import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.collect
@@ -85,14 +83,8 @@ class MainViewModelImpl(
         }
     }
 
-    private val errorHandler = CoroutineExceptionHandler { _, exception ->
-        Log.e("ciccio", "Pasticcio")
-
-    }
-
-
     override fun companyInfo() {
-        viewModelScope.launch(errorHandler) {
+        viewModelScope.launch {
             headerTransientMutableUiState.loading()
             getCompanyInfo.execute()
                 .catch { throwable -> headerTransientMutableUiState.emit(throwable) }

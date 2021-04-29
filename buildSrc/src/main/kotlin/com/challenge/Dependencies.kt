@@ -15,7 +15,7 @@ object AndroidSettings {
     const val minSdk = 26
     const val targetSdk = 30
     const val applicationId = "com.challenge.spacex"
-    const val testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+    const val testInstrumentationRunner = "com.challenge.spacex.main.TestInstrumentationRunner"
 }
 
 object Plugins {

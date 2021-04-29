@@ -17,7 +17,7 @@ object NetworkModule {
 
     fun getRetrofitBuilder(
         gsonConverterFactory: GsonConverterFactory = getGsonConverterFactory(getGson()),
-        baseUrl: String = getBaseUrl()
+        baseUrl: String
     ): Retrofit.Builder = Retrofit.Builder()
         .baseUrl(baseUrl)
         .addConverterFactory(gsonConverterFactory)
@@ -41,9 +41,6 @@ object NetworkModule {
         return Cache(cacheDirectory, HTTP_CACHE_SIZE_IN_BYTES)
 
     }
-
-    private fun getBaseUrl(baseUrlOverride: String? = null) =
-        baseUrlOverride ?: "https://api.spacexdata.com/v3/"
 
     private fun getGson(): Gson = GsonBuilder().create()
 

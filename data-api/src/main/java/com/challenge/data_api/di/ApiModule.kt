@@ -27,11 +27,18 @@ object ApiModule {
     fun getDateFormatter(): DateFormatter =
         DateFormatterImpl()
 
-    fun getApi(applicationContext: Context): ApiService =
-        getRetrofit(applicationContext).create(ApiService::class.java)
+    fun getApi(
+        applicationContext: Context,
+        apiUrl: String
+    ): ApiService =
+        getRetrofit(applicationContext, apiUrl)
+            .create(ApiService::class.java)
 
-    private fun getRetrofit(applicationContext: Context): Retrofit =
-        NetworkModule.getRetrofitBuilder()
+    private fun getRetrofit(
+        applicationContext: Context,
+        apiUrl: String
+    ): Retrofit =
+        NetworkModule.getRetrofitBuilder(baseUrl = apiUrl)
             .client(NetworkModule.getHttpBuilder(applicationContext).build())
             .build()
 
