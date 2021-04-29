@@ -73,17 +73,17 @@ class CompanyInfoRepositoryToDomainModelMapperImplTest(
         }
     }
 
-    private lateinit var cut: CompanyInfoRepositoryToDomainModelMapperImpl
+    private lateinit var underTest: CompanyInfoRepositoryToDomainModelMapperImpl
 
     @Before
     fun setUp() {
-        cut = CompanyInfoRepositoryToDomainModelMapperImpl()
+        underTest = CompanyInfoRepositoryToDomainModelMapperImpl()
     }
 
     @Test
     fun `Given companyInfos when toDomainModel then returns expected result`() {
         // When
-        val actualValue = cut.toDomainModel(givenCompanyInfo)
+        val actualValue = underTest.toDomainModel(givenCompanyInfo)
 
         // Then
         assertEquals(expected, actualValue)

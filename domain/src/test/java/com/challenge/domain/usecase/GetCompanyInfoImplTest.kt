@@ -21,7 +21,7 @@ import kotlin.test.assertEquals
 
 @RunWith(MockitoJUnitRunner::class)
 class GetCompanyInfoImplTest {
-    private lateinit var cut: GetCompanyInfoImpl
+    private lateinit var underTest: GetCompanyInfoImpl
 
     @Mock
     lateinit var spaceXRepository: SpaceXRepository
@@ -35,7 +35,7 @@ class GetCompanyInfoImplTest {
 
     @Before
     fun setUp() {
-        cut = GetCompanyInfoImpl(spaceXRepository)
+        underTest = GetCompanyInfoImpl(spaceXRepository)
     }
 
     @Test
@@ -64,7 +64,7 @@ class GetCompanyInfoImplTest {
             )
             given(spaceXRepository.getCompanyInfo()).willReturn(channelCompanyInfo.asFlow())
 
-            val actualValue = cut.execute().first()
+            val actualValue = underTest.execute().first()
 
             verify(spaceXRepository).getCompanyInfo()
 

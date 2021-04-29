@@ -73,17 +73,17 @@ class CompanyInfoDomainToUiModelMapperTest(
         }
     }
 
-    private lateinit var cut: CompanyInfoDomainToUiModelMapperImpl
+    private lateinit var underTest: CompanyInfoDomainToUiModelMapperImpl
 
     @Before
     fun setUp() {
-        cut = CompanyInfoDomainToUiModelMapperImpl()
+        underTest = CompanyInfoDomainToUiModelMapperImpl()
     }
 
     @Test
     fun `Given companyInfoDomainModel when toUiModel then returns expected result`() {
         // When
-        val actualValue = cut.toUiModel(givenCompanyInfo)
+        val actualValue = underTest.toUiModel(givenCompanyInfo)
 
         // Then
         assertEquals(expected, actualValue)

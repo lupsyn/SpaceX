@@ -21,7 +21,7 @@ import kotlin.test.assertEquals
 @RunWith(MockitoJUnitRunner::class)
 class LaunchesDomainToUiModelMapperTest {
 
-    private lateinit var cut: LaunchesDomainToUiModelMapperImpl
+    private lateinit var underTest: LaunchesDomainToUiModelMapperImpl
 
     @Mock
     lateinit var dateTransformer: DateTransformer
@@ -31,7 +31,7 @@ class LaunchesDomainToUiModelMapperTest {
 
     @Before
     fun setUp() {
-        cut = LaunchesDomainToUiModelMapperImpl(dateTransformer)
+        underTest = LaunchesDomainToUiModelMapperImpl(dateTransformer)
     }
 
     @Test
@@ -91,7 +91,7 @@ class LaunchesDomainToUiModelMapperTest {
             .willReturn(false)
 
         // When
-        val actualValue = cut.toUiModel(launches)
+        val actualValue = underTest.toUiModel(launches)
 
         // Then
         assertEquals(expected, actualValue)
@@ -129,7 +129,7 @@ class LaunchesDomainToUiModelMapperTest {
             .willReturn("1")
 
         // When
-        val actualValue = cut.toUiModel(launches)
+        val actualValue = underTest.toUiModel(launches)
 
         // Then
         assertEquals(expected, actualValue)
@@ -142,7 +142,7 @@ class LaunchesDomainToUiModelMapperTest {
         val expected = emptyList<LaunchUiModel>()
 
         // When
-        val actualValue = cut.toUiModel(launches)
+        val actualValue = underTest.toUiModel(launches)
 
         // Then
         assertEquals(expected, actualValue)

@@ -76,17 +76,17 @@ class CompanyInfoResponseToRepositoryModelMapperImplTest(
         }
     }
 
-    private lateinit var cut: CompanyInfoResponseToRepositoryModelMapperImpl
+    private lateinit var underTest: CompanyInfoResponseToRepositoryModelMapperImpl
 
     @Before
     fun setUp() {
-        cut = CompanyInfoResponseToRepositoryModelMapperImpl()
+        underTest = CompanyInfoResponseToRepositoryModelMapperImpl()
     }
 
     @Test
     fun `Given companyInfoResponses when toRepositoryModel then returns expected result`() {
         // When
-        val actualValue = cut.toRepositoryModel(givenCompanyInfo)
+        val actualValue = underTest.toRepositoryModel(givenCompanyInfo)
 
         // Then
         assertEquals(expected, actualValue)

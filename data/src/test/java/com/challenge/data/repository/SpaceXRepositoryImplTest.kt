@@ -2,31 +2,36 @@ package com.challenge.data.repository
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.challenge.MainCoroutineRule
+import com.challenge.data.SpaceXLocalSource
 import com.challenge.data.SpaceXRemoteSource
 import com.challenge.data.mapper.CompanyInfoRepositoryToDomainModelMapper
 import com.challenge.data.mapper.LaunchesRepositoryToDomainModelMapper
 import com.challenge.data.model.CompanyInfoRepositoryModel
-import com.challenge.data.model.LaunchRepositoryModel
+import com.challenge.domain.model.CompanyInfoDomainModel
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.test.runBlockingTest
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.rules.TestRule
 import org.junit.runner.RunWith
-import org.mockito.BDDMockito.given
-import org.mockito.BDDMockito.verify
+import org.mockito.BDDMockito.*
 import org.mockito.Mock
 import org.mockito.junit.MockitoJUnitRunner
+import kotlin.test.assertEquals
 
 @ExperimentalCoroutinesApi
 @RunWith(MockitoJUnitRunner::class)
 class SpaceXRepositoryImplTest {
-    private lateinit var cut: SpaceXRepositoryImpl
+    private lateinit var underTest: SpaceXRepositoryImpl
 
     @Mock
     lateinit var spaceXRemoteSource: SpaceXRemoteSource
+
+    @Mock
+    lateinit var spaceXLocalSource: SpaceXLocalSource
 
     @Mock
     lateinit var companyInfoDomainMapper: CompanyInfoRepositoryToDomainModelMapper
@@ -35,10 +40,10 @@ class SpaceXRepositoryImplTest {
     lateinit var launchesDomainMapper: LaunchesRepositoryToDomainModelMapper
 
     @Mock
-    lateinit var companyInfoModelFlows: Flow<CompanyInfoRepositoryModel>
+    lateinit var companyInfoModel: CompanyInfoRepositoryModel
 
     @Mock
-    lateinit var launcheRepositoriesFlows: Flow<List<LaunchRepositoryModel>>
+    lateinit var companyInfoDomainModel: CompanyInfoDomainModel
 
     @get:Rule
     var rule: TestRule = InstantTaskExecutorRule()
@@ -49,33 +54,50 @@ class SpaceXRepositoryImplTest {
 
     @Before
     fun setUp() {
-        cut =
-            SpaceXRepositoryImpl(spaceXRemoteSource, companyInfoDomainMapper, launchesDomainMapper)
+        underTest =
+            SpaceXRepositoryImpl(
+                spaceXRemoteSource,
+                spaceXLocalSource,
+                companyInfoDomainMapper,
+                launchesDomainMapper
+            )
     }
 
     @Test
-    fun `When getCompanyInfo then spaceXRemoteSource invoked`() {
+    fun `emit local company info response if present`() {
         runBlockingTest {
-            // When
-            given(spaceXRemoteSource.getCompanyInfo()).willReturn(companyInfoModelFlows)
+            val emitMockFlow = flow { emit(companyInfoModel) }
 
-            cut.getCompanyInfo()
+            given(spaceXLocalSource.getCompanyInfo()).willReturn(emitMockFlow)
+            given(companyInfoDomainMapper.toDomainModel(companyInfoModel)).willReturn(
+                companyInfoDomainModel
+            )
 
-            // Then
-            verify(spaceXRemoteSource).getCompanyInfo()
+            underTest.getCompanyInfo().collect { assertEquals(it, companyInfoDomainModel) }
+
+            verify(spaceXLocalSource).getCompanyInfo()
+            verifyNoInteractions(spaceXRemoteSource)
         }
     }
 
     @Test
-    fun `When getAllLaunches then spaceXRemoteSource invoked`() {
+    fun `will hit remote company repository if cached response is null and persist response`() {
         runBlockingTest {
-            // When
-            given(spaceXRemoteSource.getAllLaunches()).willReturn(launcheRepositoriesFlows)
+            val emitMockFlow = flow { emit(companyInfoModel) }
+            val emitNull = flow { emit(null) }
 
-            cut.getAllLaunches()
+            given(spaceXLocalSource.getCompanyInfo()).willReturn(emitNull)
+            given(spaceXRemoteSource.getCompanyInfo()).willReturn(emitMockFlow)
 
-            // Then
-            verify(spaceXRemoteSource).getAllLaunches()
+            given(companyInfoDomainMapper.toDomainModel(companyInfoModel)).willReturn(
+                companyInfoDomainModel
+            )
+
+            underTest.getCompanyInfo().collect {
+                assertEquals(it, companyInfoDomainModel)
+            }
+            verify(spaceXLocalSource).insertCompanyInfo(companyInfoModel)
+            verify(spaceXRemoteSource).getCompanyInfo()
         }
     }
 }

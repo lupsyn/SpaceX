@@ -3,11 +3,15 @@ package com.challenge.data_api.data
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.challenge.MainCoroutineRule
 import com.challenge.data.SpaceXRemoteSource
+import com.challenge.data.model.CompanyInfoRepositoryModel
+import com.challenge.data.model.LaunchRepositoryModel
 import com.challenge.data_api.ApiService
 import com.challenge.data_api.mapper.CompanyInfoResponseToRepositoryModelMapper
 import com.challenge.data_api.mapper.LaunchesResponseToRepositoryModelMapper
 import com.challenge.data_api.model.CompanyInfoResponse
 import com.challenge.data_api.model.LaunchesResponse
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.test.runBlockingTest
 import org.junit.Before
 import org.junit.Rule
@@ -18,11 +22,13 @@ import org.mockito.BDDMockito.given
 import org.mockito.BDDMockito.verify
 import org.mockito.Mock
 import org.mockito.junit.MockitoJUnitRunner
+import kotlin.test.assertEquals
 
 
+@ExperimentalCoroutinesApi
 @RunWith(MockitoJUnitRunner::class)
 class SpaceXRemoteSourceImplTest {
-    private lateinit var cut: SpaceXRemoteSource
+    private lateinit var underTest: SpaceXRemoteSource
 
     @Mock
     lateinit var apiService: ApiService
@@ -39,6 +45,12 @@ class SpaceXRemoteSourceImplTest {
     @Mock
     lateinit var launches: List<LaunchesResponse>
 
+    @Mock
+    lateinit var companyInfoRepositoryModel: CompanyInfoRepositoryModel
+
+    @Mock
+    lateinit var launchesList: List<LaunchRepositoryModel>
+
 
     @get:Rule
     var rule: TestRule = InstantTaskExecutorRule()
@@ -49,7 +61,7 @@ class SpaceXRemoteSourceImplTest {
 
     @Before
     fun setUp() {
-        cut = SpaceXRemoteSourceImpl(
+        underTest = SpaceXRemoteSourceImpl(
             apiService,
             companyInfoRepositoryMapper,
             launchesRepositoryMapper
@@ -59,12 +71,16 @@ class SpaceXRemoteSourceImplTest {
     @Test
     fun `When getCompanyInfo then apiService invoked`() {
         runBlockingTest {
-            // When
+
             given(apiService.getCompanyInfo()).willReturn(companyInfoResponse)
+            given(companyInfoRepositoryMapper.toRepositoryModel(companyInfoResponse)).willReturn(
+                companyInfoRepositoryModel
+            )
+            underTest.getCompanyInfo()
+                .collect {
+                    assertEquals(it, companyInfoRepositoryModel)
+                }
 
-            cut.getCompanyInfo()
-
-            // Then
             verify(apiService).getCompanyInfo()
         }
     }
@@ -72,12 +88,14 @@ class SpaceXRemoteSourceImplTest {
     @Test
     fun `When getAllLaunches then apiService invoked`() {
         runBlockingTest {
-            // When
             given(apiService.getAllLaunches()).willReturn(launches)
+            given(launchesRepositoryMapper.toRepositoryModel(launches)).willReturn(launchesList)
 
-            cut.getAllLaunches()
+            underTest.getAllLaunches()
+                .collect {
+                    assertEquals(it, launchesList)
+                }
 
-            // Then
             verify(apiService).getAllLaunches()
         }
     }

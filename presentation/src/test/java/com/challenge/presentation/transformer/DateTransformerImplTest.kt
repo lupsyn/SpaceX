@@ -13,14 +13,14 @@ import kotlin.test.assertEquals
 
 @RunWith(MockitoJUnitRunner::class)
 class DateTransformerImplTest {
-    private lateinit var cut: DateTransformerImpl
+    private lateinit var underTest: DateTransformerImpl
 
     @Mock
     lateinit var dateTimeProvider: DateTimeProvider
 
     @Before
     fun setUp() {
-        cut = DateTransformerImpl(dateTimeProvider)
+        underTest = DateTransformerImpl(dateTimeProvider)
     }
 
     @Test
@@ -30,7 +30,7 @@ class DateTransformerImplTest {
         val expected = "02-01-2019 at 04:03"
 
         // When
-        val actualValue = cut.dateToDateString(dateTime)
+        val actualValue = underTest.dateToDateString(dateTime)
 
         // Then
         assertEquals(expected, actualValue)
@@ -45,7 +45,7 @@ class DateTransformerImplTest {
         val expected = "1096"
 
         // When
-        val actualValue = cut.getDifferenceOfDays(dateTime)
+        val actualValue = underTest.getDifferenceOfDays(dateTime)
 
         // Then
         assertEquals(expected, actualValue)
@@ -60,7 +60,7 @@ class DateTransformerImplTest {
         val expected = true
 
         // When
-        val actualValue = cut.isPast(dateTime)
+        val actualValue = underTest.isPast(dateTime)
 
         // Then
         assertEquals(expected, actualValue)

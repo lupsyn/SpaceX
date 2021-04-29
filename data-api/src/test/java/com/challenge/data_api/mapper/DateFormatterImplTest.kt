@@ -30,17 +30,17 @@ class DateFormatterImplTest(
             DateTimeFormat.forPattern("dd-MM-yyyy").parseDateTime(dateValue)
     }
 
-    private lateinit var cut: DateFormatterImpl
+    private lateinit var underTest: DateFormatterImpl
 
     @Before
     fun setUp() {
-        cut = DateFormatterImpl()
+        underTest = DateFormatterImpl()
     }
 
     @Test
     fun `Given dateValue when format then returns expected result`() {
         // When
-        val actualValue = cut.format(givenDateValue)
+        val actualValue = underTest.format(givenDateValue)
 
         // Then
         assertEquals(expected, actualValue)

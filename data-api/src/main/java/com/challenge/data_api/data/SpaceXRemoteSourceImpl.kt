@@ -8,9 +8,8 @@ import com.challenge.data_api.mapper.CompanyInfoResponseToRepositoryModelMapper
 import com.challenge.data_api.mapper.LaunchesResponseToRepositoryModelMapper
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.FlowPreview
-import kotlinx.coroutines.channels.ConflatedBroadcastChannel
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.asFlow
+import kotlinx.coroutines.flow.flow
 
 @FlowPreview
 @ExperimentalCoroutinesApi
@@ -19,24 +18,18 @@ class SpaceXRemoteSourceImpl(
     private val companyInfoRepositoryMapper: CompanyInfoResponseToRepositoryModelMapper,
     private val launchesRepositoryMapper: LaunchesResponseToRepositoryModelMapper
 ) : SpaceXRemoteSource {
-
-    private val companyInfoChannel = ConflatedBroadcastChannel<CompanyInfoRepositoryModel>()
-    private val launchesChannel = ConflatedBroadcastChannel<List<LaunchRepositoryModel>>()
-
-    override suspend fun getCompanyInfo(): Flow<CompanyInfoRepositoryModel> {
+    override suspend fun getCompanyInfo(): Flow<CompanyInfoRepositoryModel> = flow {
         val companyInfoResponse = apiService.getCompanyInfo()
         val companyInfoRepositoryModel =
             companyInfoRepositoryMapper.toRepositoryModel(companyInfoResponse)
-        companyInfoChannel.offer(companyInfoRepositoryModel)
-        return companyInfoChannel.asFlow()
-
+        emit(companyInfoRepositoryModel)
     }
 
-    override suspend fun getAllLaunches(): Flow<List<LaunchRepositoryModel>> {
+
+   override suspend fun getAllLaunches(): Flow<List<LaunchRepositoryModel>> = flow {
         val allLaunchesResponse = apiService.getAllLaunches()
         val launchesRepositoryModel =
             launchesRepositoryMapper.toRepositoryModel(allLaunchesResponse)
-        launchesChannel.offer(launchesRepositoryModel)
-        return launchesChannel.asFlow()
+        emit(launchesRepositoryModel)
     }
 }

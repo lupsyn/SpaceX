@@ -21,7 +21,7 @@ import kotlin.test.assertEquals
 
 @RunWith(MockitoJUnitRunner::class)
 class GetLaunchesImplTest {
-    private lateinit var cut: GetLaunchesImpl
+    private lateinit var underTest: GetLaunchesImpl
 
     @Mock
     lateinit var spaceXRepository: SpaceXRepository
@@ -32,7 +32,7 @@ class GetLaunchesImplTest {
 
     @Before
     fun setUp() {
-        cut = GetLaunchesImpl(spaceXRepository, launchesDomainFilter)
+        underTest = GetLaunchesImpl(spaceXRepository, launchesDomainFilter)
     }
 
     @Test
@@ -80,7 +80,7 @@ class GetLaunchesImplTest {
             )
 
             // When
-            val actualValue = cut.execute(-1, false).first()
+            val actualValue = underTest.execute(-1, false).first()
 
             // Then
             verify(spaceXRepository).getAllLaunches()

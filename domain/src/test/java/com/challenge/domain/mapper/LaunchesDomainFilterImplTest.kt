@@ -12,11 +12,11 @@ import kotlin.test.assertEquals
 
 @RunWith(MockitoJUnitRunner::class)
 class LaunchesDomainFilterImplTest {
-    private lateinit var cut: LaunchesDomainFilterImpl
+    private lateinit var underTest: LaunchesDomainFilterImpl
 
     @Before
     fun setUp() {
-        cut = LaunchesDomainFilterImpl()
+        underTest = LaunchesDomainFilterImpl()
     }
 
     @Test
@@ -72,7 +72,7 @@ class LaunchesDomainFilterImplTest {
         val ascendantOrder = false
 
         // When
-        val actualValue = cut.filter(launchesDomainModel, filterYear, ascendantOrder)
+        val actualValue = underTest.filter(launchesDomainModel, filterYear, ascendantOrder)
 
         // Then
         assertEquals(expected, actualValue)
@@ -131,7 +131,7 @@ class LaunchesDomainFilterImplTest {
         val ascendantOrder = true
 
         // When
-        val actualValue = cut.filter(launchesDomainModel, filterYear, ascendantOrder)
+        val actualValue = underTest.filter(launchesDomainModel, filterYear, ascendantOrder)
 
         // Then
         assertEquals(expected, actualValue)

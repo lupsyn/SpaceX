@@ -125,7 +125,7 @@ class LaunchesResponseToRepositoryModelMapperImplTest(
             DateTimeFormat.forPattern("dd-MM-yyyy").parseDateTime(dateValue)
     }
 
-    private lateinit var cut: LaunchesResponseToRepositoryModelMapperImpl
+    private lateinit var underTest: LaunchesResponseToRepositoryModelMapperImpl
 
     @Mock
     lateinit var dateFormatter: DateFormatter
@@ -133,13 +133,13 @@ class LaunchesResponseToRepositoryModelMapperImplTest(
     @Before
     fun setUp() {
         dateFormatter = DateFormatterImpl()
-        cut = LaunchesResponseToRepositoryModelMapperImpl(dateFormatter)
+        underTest = LaunchesResponseToRepositoryModelMapperImpl(dateFormatter)
     }
 
     @Test
     fun `Given launchResponseModels when toRepositoryModel then returns expected result`() {
         // When
-        val actualValue = cut.toRepositoryModel(givenLaunches)
+        val actualValue = underTest.toRepositoryModel(givenLaunches)
 
         // Then
         assertEquals(expected, actualValue)

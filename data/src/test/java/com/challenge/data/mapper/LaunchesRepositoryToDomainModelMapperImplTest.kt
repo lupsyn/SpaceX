@@ -115,17 +115,17 @@ class LaunchesRepositoryToDomainModelMapperImplTest(
             DateTimeFormat.forPattern("dd-MM-yyyy").parseDateTime(dateValue)
     }
 
-    private lateinit var cut: LaunchesRepositoryToDomainModelMapperImpl
+    private lateinit var underTest: LaunchesRepositoryToDomainModelMapperImpl
 
     @Before
     fun setUp() {
-        cut = LaunchesRepositoryToDomainModelMapperImpl()
+        underTest = LaunchesRepositoryToDomainModelMapperImpl()
     }
 
     @Test
     fun `Given launchRepositoryModels when toDomainModel then returns expected result`() {
         // When
-        val actualValue = cut.toDomainModel(givenLaunches)
+        val actualValue = underTest.toDomainModel(givenLaunches)
 
         // Then
         assertEquals(expected, actualValue)
