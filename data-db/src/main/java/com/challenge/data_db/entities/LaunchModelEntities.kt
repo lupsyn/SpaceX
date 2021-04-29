@@ -30,6 +30,3 @@ data class LaunchModelEntities(
         const val LAUNCHES = "launches"
     }
 }
-
-
-

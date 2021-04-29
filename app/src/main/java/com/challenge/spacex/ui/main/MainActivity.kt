@@ -2,16 +2,14 @@ package com.challenge.spacex.ui.main
 
 import android.app.Activity
 import android.os.Bundle
-import android.view.View
 import androidx.annotation.ColorRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
-import androidx.core.view.ViewCompat
-import androidx.navigation.fragment.findNavController
-import androidx.navigation.ui.NavigationUI
 import com.challenge.spacex.R
 import com.challenge.spacex.ui.main.di.MainActivityModule
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 
+@ExperimentalCoroutinesApi
 class MainActivity : AppCompatActivity() {
 
     private val fragmentFactory by lazy { MainActivityModule.getFragmentFactory(application) }
